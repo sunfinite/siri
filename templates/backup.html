@@ -1,0 +1,145 @@
+
+<body style="oveflow-x:hidden;">
+<div id="div1" class="group1" style="border:1px solid black; width:200px; position:absolute; left:-210px; visibility:visible;" >
+
+	<p> DIV1</p>
+		 
+</div>	
+<div id="div2" class="group1" style="border:1px solid black; width:200px; position:absolute; left:-210px; visibility:hidden;" >
+
+		 <p>
+			DIV2	
+		</p>
+</div>	
+<div id="div3" class="group1" style="border:1px solid black; width:200px; position:absolute; left:-210px; visibility:hidden;" >
+
+		 <p>
+			DIV3	
+		</p>
+</div>	
+<div id="div4" class="group1" style="border:1px solid black; width:200px; position:absolute; left:-210px; visibility:hidden;" >
+
+		 <p>
+			DIV4	
+		</p>
+</div>	
+
+
+<div id="div5" class="group2" style="border:1px solid black; width:200px; position:absolute; left:-210px; visibility:hidden;" >
+
+		 <p>
+			DIV5	
+		</p>
+</div>	
+<div id="div6" class="group2" style="border:1px solid black; width:200px; position:absolute; left:-210px; visibility:hidden;" >
+
+		 <p>
+			DIV6	
+		</p>
+</div>	
+
+<div id="div7" class="group2" style="border:1px solid black; width:200px; position:absolute; left:-210px; visibility:hidden;" >
+
+		 <p>
+			DIV7	
+		</p>
+</div>	
+
+<div id="div8" class="group2" style="border:1px solid black; width:200px; position:absolute; left:-210px; visibility:hidden;" >
+
+		 <p>
+			DIV8	
+		</p>
+</div>	
+
+
+
+
+<input type="submit" value="previous" id="butt1" style="position:absolute; bottom:5%; left:5%; visibility:hidden;" onclick="if(document.getElementById('div1').style.visibility=='visible')takeoutleft('div1','div2');else takeoutleft('div2','div1');">
+<input type="submit" value="forward" id="butt2" style="position:absolute; bottom:5%; right:5%; visibility:hidden;" onclick="if(document.getElementById('div1').style.visibility=='visible')takeoutright('div1','div2');else takeoutright('div2','div1');">
+</body>	
+
+<script type="text/javascript">     
+       window.onload=initialdelay;	
+	val=0;	 
+	width=window.innerWidth-(parseInt(document.getElementById('div1').style.width)+10);
+	width1=width;
+	width/=2;
+	val1=width;
+	function initialdelay() {
+		setTimeout("bringin()",300);
+	}
+	function bringin() {
+		if(val<=width)
+		{		
+			add=(width-val)/42;
+			var obj=document.getElementById('div1');
+			if(add>0.042){
+				val+=add;
+				obj.style.left=val;
+				setTimeout(function() { bringin() },1);
+			}
+			else { 	
+				val-=add*24;	
+				setTimeout(function() {obj.style.left=val;val1=val;val=0;document.getElementById('butt2').style.visibility='visible'},1);
+			}
+		}
+	
+	}
+	function takeoutright(visible,hidden) {
+		var obj1=document.getElementById(visible);
+		var obj2=document.getElementById(hidden);
+		obj2.style.visibility='visible';
+		if(val1<=width1 && val<=width)
+		{
+			val1+=13;
+			add=(width-val)/42;
+			val+=add;
+			obj1.style.left=val1;
+			obj2.style.left=val;				
+			setTimeout(function() {takeoutright(visible,hidden) },1);
+		}
+		else if(val<=width) {
+			obj1.style.visibility='hidden';
+			add=(width-val)/42;
+			if(add>0.042){
+				val+=add;
+				obj2.style.left=val;
+				setTimeout(function() { takeoutright(visible,hidden) },1);
+			}
+			else { 	
+				val-=add*24;	
+				setTimeout(function() { obj2.style.left=val;val1=val;val=0;document.getElementById('butt1').style.visibility='visible'},1);
+			}
+		}		
+					
+	}
+		function takeoutleft(visible,hidden) {
+			var obj1=document.getElementById(visible);
+			var obj2=document.getElementById(hidden);
+			obj2.style.visibility='visible';
+			if(val1>=0 && val<=width)
+			{
+				val1-=13;
+				add=(width-val)/42;
+				val+=add;
+				obj1.style.left=val1;
+				obj2.style.left=width1-val;				
+				setTimeout(function() {takeoutleft(visible,hidden) },1);
+			}
+			else if(val<=width) {
+				obj1.style.visibility='hidden';
+				add=(width-val)/42;
+				if(add>0.042){
+				val+=add;
+				obj2.style.left=width1-val;
+				setTimeout(function() { takeoutleft(visible,hidden) },1);
+			}
+			else { 	
+				val+=add*24;	
+				setTimeout(function() {obj2.style.left=width1-val;val1=val-10;val=0},1);
+			}
+		}		
+					
+	}			
+</script>

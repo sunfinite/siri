@@ -1,0 +1,10 @@
+application:siri
+version:0
+runtime: python
+api_version: 1
+default_expiration: "7d"
+handlers:
+- url: (.*)/
+  script:siri.py
+
+  

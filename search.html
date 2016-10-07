@@ -1,0 +1,70 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <script type="text/javascript" src="https://www.google.com/jsapi">
+    </script>
+    <script type="text/javascript">
+
+      
+      google.load("elements", "1", {
+            packages: "transliteration"
+          });
+
+      function onLoad() {
+        var options = {
+          sourceLanguage: 'en', 
+	  destinationLanguage: ['kn'],  
+	  shortcutKey: 'ctrl+g',
+	  transliterationEnabled: true
+        };
+                var control =
+            new google.elements.transliteration.TransliterationControl(options);
+
+        var ids = [ "searchbox"];
+        control.makeTransliteratable(ids);
+      }
+      google.setOnLoadCallback(onLoad);
+    </script>
+    <style type="text/css">
+	#image
+	{
+		position:fixed;	
+		top:-26%;
+		left:25%;
+	}
+       	#area
+	 {
+		 position:absolute;
+		 top:45%;
+		 left:30%;
+		 text-align:center;
+	}
+
+	#searchbox
+	{
+		width:420px;
+		background-color:#FFFFFA;
+		height:35px;
+		font-size:18px;
+	}
+	#submit
+	{
+		width:100px;
+		height:30px;
+		font-size:15px;
+	}
+	
+	</style>
+  </head>
+  <body>
+	  <img src="siri.jpg" id="image" align="center">
+	  <!--<applet code="SearchEngine" style="position:absolute; top:10%; " codebase="/home/sunfinity/pyseen/frontend" width="1200" height="500" alt="Applet Not Loaded"></applet>-->
+    		<div id='area' align="center">
+				<input type='text' id="searchbox"/>
+				<br/>
+				<br/>
+				<input type='button' id="submit" value="ಹುಡುಕಿ "/>
+			</div>
+			
+  </body>
+</html>

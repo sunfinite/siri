@@ -1,0 +1,122 @@
+$def with (char,temp)
+<html>
+  <head>
+	  <link rel="shorcut icon" href="/static/favicon.ico"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>
+	    ಸಿರಿ
+    </title>
+    <script type="text/javascript">
+	    var visible=false;
+	    var changecount;
+	    var strarray=[];
+			function convert() {
+				changecount=1;
+				str=document.getElementById('searchbox');
+				str.value=document.convertapplet.main(str.value);		
+			}
+			function change() {
+				str=document.getElementById('searchbox');
+				if(changecount==1) {
+				strarray=document.changeapplet.main(str.value);		
+				}
+				str.value=strarray[changecount++];
+				if(!strarray[changecount])
+					changecount=0;
+				 
+					     				  
+			}
+  </script>
+		
+        <style type="text/css">
+	 body {
+		 background-color:black;
+		 background-image:url("../static/space.jpg");
+	}
+	#image
+	{
+		position:fixed;	
+		left:37%;
+	}
+       	#area
+	 {
+		 position:absolute;
+		 top:45%;
+		 left:30%;
+	}
+
+	#searchbox
+	{
+		width:420px;
+		background-color:#FFFFFA;
+		height:45px;
+		font-size:18px;
+	}
+	#submit
+	{
+		position:relative;
+		right:5%;
+		width:100px;
+		height:30px;
+		font-size:15px;
+	}
+	#showkeyboard
+	{
+	 width:90px; 
+	 height:30px; 
+	 text-align:center;
+	 border:1px black solid; 
+	 background-color:white; 
+	 cursor:default;
+	-moz-border-radius: 30px ;
+	-webkit-border-radius: 30px;
+	-khtml-border-radius: 30px;
+	border-radius: 30px;
+	opacity:0.8;
+	}
+	</style>
+  </head>
+  <applet  archive="../static/converter.jar"  code = "test.class" name = "convertapplet" width = "0" height = "0" hspace = "0" vspace = "0" align = "top" VIEWASTEXT>
+  </applet>
+  <applet   archive="../static/converter.jar" code = "testReco.class" name = "changeapplet" width = "0" height = "0" hspace = "0" vspace = "0"
+align = "top" VIEWASTEXT>
+</applet>
+
+  <body>
+	  <img src="../static/siri.gif" id="image" >
+    		<div id='area' align="center">
+			<form name='form' method="POST" onsubmit="return check();">				
+				<input type='text' name="query" title="Press <alt> for other letters"   onkeyup="if(event.keyCode==18) change(); else convert();"  id="searchbox"/>
+				<span id="showkeyboard" onclick=" if(visible) {
+					document.getElementById('virtual').style.visibility='hidden'; 
+					visible=false;
+					} 
+					else {
+					document.getElementById('virtual').style.visibility='visible'; 
+					visible=true;
+					}"
+					 onmouseover="this.style.background='#C0C0C0'" onmouseout="this.style.background='white'" >
+			  ಕೀಬೋರ್ಡ್
+			  </span>
+				<br/>
+				<br/>
+				<input type='submit' id="submit" value="ಹುಡುಕಿ "/>
+			</form>
+			</div>
+			
+  </body>
+ <div id="virtual" style="visibility:hidden; position:absolute; bottom:2%; left:3%;  ">
+  <table name="vkey" id="vkey" style="border:1px black solid; background-color:#808080 ">
+	  $for i in range(5) :
+		<tr>
+			$for j in range(17) :
+				<td style="border:1px black solid; width:60px; height:20px; background-color:#808080;" >					
+					<div id="kchar" style="width:60px; text-align:center; font-size:20; padding-bottom:4px; height:20px; cursor:default;"  onmouseover="this.style.background='#C0C0C0'" onmouseout="this.style.background='#808080'" onclick="str=document.getElementById('searchbox'); str.value+=this.innerHTML">&#$temp</div>					
+					$code:
+					   temp+=1
+
+				<td>
+		<tr>
+  </table>
+  </div>
+  	</html>

@@ -1,0 +1,185 @@
+$def with (results)
+<script>var results=$:results;</script>
+<html>
+	<link rel="shortcut icon" href="../static/favicon.ico">
+	<head>
+		<title>
+			ಸಿರಿ
+		</title>
+	<script type="text/javascript" src="../static/results.js">
+	</script>
+	<style type="text/css">
+		body {
+			background-color:black;
+			background-image:url('../static/space1.jpg');
+		     }
+		 div {
+			 background-color:#808080;
+			 width:400px;
+			 height:160px;
+			 overflow:auto;
+			 border:1px solid #000000;
+			 overflow:auto;
+			-moz-border-radius: 30px ;
+			-webkit-border-radius: 30px;
+			-khtml-border-radius: 30px;
+			 border-radius: 30px;
+			 opacity:0.75; 
+			 padding-left:15px;
+			 padding-top:5px;
+		     }
+		   p {
+			   font-size:13;
+		     }
+		   a {
+			   font-size:17;
+		     }
+		   b {
+			font-size:15;
+			color:orange;
+			
+		     }
+		 #siri {
+			 width: 70px;
+			 height:50px;
+			 position:fixed;
+			 left:44%;
+			 top:1%;
+		}
+		#left {
+			position : fixed;
+			top:40%;
+			left:2%;
+		}
+		#right {
+			position: fixed;
+			top:40%;
+			right:2%;
+		}
+		#button {
+			position: fixed;
+			top:37%;
+			left:42%;
+		}
+	</style>
+	<script>
+		function showchange(obj) {
+					}
+		function effect(this) {
+			this.style.width=420;
+			this.style.height=180;
+		}
+	</script>
+</head>
+
+<body>	
+<img id="siri" src="../static/sirismall.gif" >
+<img id="left"  src="../static/left.gif"  style="visibility:hidden;" onclick="this.style.width=90;
+						this.style.height=90;
+			setTimeout(function() {document.getElementById('left').style.width=100; document.getElementById('left').style.height=100;},100);
+			if(document.getElementById('div1').style.visibility=='visible')takeoutleft('group1','group2');else takeoutleft('group2','group1');">
+<img id="right"  src="../static/right.gif" style="visibility:hidden;" onclick="this.style.width=90;
+							this.style.height=90;
+							setTimeout(function() {document.getElementById('right').style.width=100; document.getElementById('right').style.height=100;},100);if(document.getElementById('div1').style.visibility=='visible')takeoutright('group1','group2');else takeoutright('group2','group1');">
+<img id="button" src="../static/button.gif" onclick="	this.style.width=110;
+						     	this.style.height=110;
+						     	setTimeout(function() { document.getElementById('button').style.width=120; document.getElementById('button').style.height=120; },100);">
+
+<div id="div1" class="group1" style=" width:350px; position:absolute; left:-210px; top:13%; visibility:visible;" onmouseover="effect(this);" onclick="redirect(this);">
+	<a id='a1' href=''></a>
+	<p id='s1'> </p>
+	<p><font id='f1' color="green"></font></p>
+		 
+</div>	
+<div id="div2" class="group1" style=" width:350px; position:absolute; left:-210px; top:13%; visibility:visible;" >
+	<a id='a2' href=''></a>
+	<p id='s2'> </p>
+	<p><font id='f2' color="green"></font></p>
+</div>	
+<div id="div3" class="group1" style=" width:350px; position:absolute; left:-210px; bottom:10%; visibility:visible;" >
+	<a id='a3' href=''></a>
+	<p id='s3'> </p>
+	<p><font id='f3' color="green"></font></p>
+
+
+</div>	
+<div id="div4" class="group1" style=" width:350px; position:absolute; left:-210px; bottom:10%; visibility:visible;" >
+	<a id='a4' href=''></a>
+	<p id='s4'> </p>
+	<p><font id='f4' color="green"></font></p>
+
+</div>	
+
+
+<div id="div5" class="group2" style=" width:350px; position:absolute; left:-210px; top:13%; visibility:hidden;" >
+	<a id='a5' href=''></a>
+	<p id='s5'> </p>
+	<p><font id='f5' color="green"></font></p>
+
+</div>	
+<div id="div6" class="group2" style=" width:350px; position:absolute; left:-210px; top:13%; visibility:hidden;" >
+	<a id='a6' href=''></a>
+	<p id='s6'> </p>
+	<p><font id='f6' color="green"></font></p>
+
+</div>	
+
+<div id="div7" class="group2" style=" width:350px; position:absolute; left:-210px; bottom:10%; visibility:hidden;" >
+	<a id='a7' href=''></a>
+	<p id='s7'> </p>
+	<p><font id='f7' color="green"></font></p>
+
+</div>	
+
+<div id="div8" class="group2" style=" width:350px; position:absolute; left:-210px; bottom:10%; visibility:hidden;" >
+	<a id='a8' href=''></a>
+	<p id='s8'> </p>
+	<p><font id='f8' color="green"></font></p>
+
+ </div>	
+
+
+
+<!--if visibility of one element in a group is visible then all will be visible...no need to check individually-->
+</body>	
+
+<script type="text/javascript">
+i=1;
+count=0;
+		while(results[count] && i<=8) {
+			document.getElementById('a'+i).innerHTML=results[count]['title'];
+			document.getElementById('a'+i).href="http://"+results[count]['url'];
+			document.getElementById('s'+i).innerHTML=results[count]['snippet'];
+			document.getElementById('f'+i).innerHTML=results[count]['url'].split('/')[0];
+			count++;
+			i++;
+		}
+                while(i<=8) {
+			document.getElementById('div'+i).style.visibility='hidden';	
+			i++;
+		}
+
+	
+max=results.length;
+val1=0;	 
+val2=0;
+val3=0;
+val4=0;
+obj1=0;
+obj2=0;
+obj3=0;
+obj4=0;
+obj5=0;
+obj6=0;
+obj7=0;
+obj8=0;
+width=window.innerWidth-(parseInt(document.getElementById('div1').style.width)+60);		
+width1=width*0.85;
+width2=width*0.15;
+window.onload=initialdelay;	
+previous='none'
+movecount=true
+</script>
+</html>
+
+
